@@ -46,6 +46,7 @@ case $readMe2 in
     docker cp grafana:/usr/share/grafana/conf/. $PWD/../signalk_volume/grafana/conf
     docker stop grafana
     docker rm grafana
+	cp $PWD/conf/grafana.ini $PWD/../signalk_volume/grafana/conf/grafana.ini
     docker-compose down && docker-compose pull && docker-compose build --no-cache && docker-compose up -d
     sleep 20
     curl -i -XPOST http://localhost:8086/query --data-urlencode "q=CREATE DATABASE boatdata"
